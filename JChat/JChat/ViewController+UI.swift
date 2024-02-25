@@ -1,29 +1,15 @@
 //
-//  ViewController.swift
+//  ViewController+UI.swift
 //  JChat
 //
-//  Created by Mehdi Oturak on 18.02.2024.
+//  Created by Mehdi Oturak on 23.02.2024.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var signInFacebookButton: UIButton!
-    @IBOutlet weak var signInGoogleButton: UIButton!
-    @IBOutlet weak var createAccountButton: UIButton!
-    @IBOutlet weak var termsOfServiceLabel: UILabel!
-    @IBOutlet weak var orLabel: UILabel!
+extension ViewController{
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-    }
-
-    
-    func setupUI(){
+    func setupHeaderTitle() {
         let title = "Create a new account"
         let subTitle = "\n\n\nLorem ipsum dolor sit amet conse ctetur adipisicing elit sed do."
         
@@ -43,30 +29,37 @@ class ViewController: UIViewController {
         attributedText.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragrapStyle, range: NSMakeRange(0, attributedText.length))
         titleLabel.numberOfLines = 0
         
-        
-        
         titleLabel.attributedText = attributedText
         
+    }
+    
+    func setupOrLabel() {
         
         orLabel.text = "Or"
         orLabel.font = UIFont.boldSystemFont(ofSize: 16)
         orLabel.textColor = UIColor(white: 0, alpha: 0.45)
         orLabel.textAlignment = .center
         
+    }
+    
+    
+     func setupTermsLabel() {
         
+         let attributedTermsText = NSMutableAttributedString(string: "By clicking Create a new account you agree to our ", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14),
+             NSAttributedString.Key.foregroundColor : UIColor(white: 0, alpha: 0.65)                                                                    ])
+         
+         let attributedSubTermsText = NSMutableAttributedString(string: "Terms of Service.", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14),
+             NSAttributedString.Key.foregroundColor : UIColor(white : 0, alpha : 0.65)
+                           ])
+         attributedTermsText.append(attributedSubTermsText)
+         
+         termsOfServiceLabel.attributedText = attributedTermsText
+         termsOfServiceLabel.numberOfLines = 0
         
-        
-        let attributedTermsText = NSMutableAttributedString(string: "By clicking Create a new account you agree to our ", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14),
-            NSAttributedString.Key.foregroundColor : UIColor(white: 0, alpha: 0.65)                                                                    ])
-        
-        let attributedSubTermsText = NSMutableAttributedString(string: "Terms of Service.", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14),
-            NSAttributedString.Key.foregroundColor : UIColor(white : 0, alpha : 0.65)
-                          ])
-        attributedTermsText.append(attributedSubTermsText)
-        
-        termsOfServiceLabel.attributedText = attributedTermsText
-        termsOfServiceLabel.numberOfLines = 0
-        
+    }
+    
+    
+    func setupFacebookButton() {
         
         signInFacebookButton.setTitle("Sign in with Facebook", for: UIControl.State.normal)
         signInFacebookButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
@@ -80,10 +73,9 @@ class ViewController: UIViewController {
         signInFacebookButton.tintColor = .white
         signInFacebookButton.imageEdgeInsets = UIEdgeInsets(top: 12, left: -15, bottom: 12, right: 0)
         
-        
-        
-        
-        
+    }
+    
+    func setupGoogleButton() {
         
         signInGoogleButton.setTitle("Sign in with Google", for: UIControl.State.normal)
         signInGoogleButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
@@ -99,8 +91,10 @@ class ViewController: UIViewController {
         signInGoogleButton.tintColor = .white
         signInGoogleButton.imageEdgeInsets = UIEdgeInsets(top: 12, left: -35, bottom: 12, right: 0)
         
-        
-        
+    }
+    
+    
+    func setupCreateAccountButton() {
         
         createAccountButton.setTitle("Create a new account", for: UIControl.State.normal)
         createAccountButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
@@ -108,9 +102,7 @@ class ViewController: UIViewController {
         createAccountButton.layer.cornerRadius = 5
         createAccountButton.clipsToBounds = true
         
-        
-        
     }
-
+    
+    
 }
-
